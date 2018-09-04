@@ -1,9 +1,18 @@
 #include "GLES2Application.h"
 
+#define GLFW_INCLUDE_ES2 1
+#include <GLFW/glfw3.h>
+
 #include <iostream>
 #include <string>
 
 namespace LearningGLES2 {
+
+GLES2Application::GLES2Application()
+    : m_isResizable(false)
+{
+
+}
 
 bool GLES2Application::initGLFW()
 {
@@ -13,7 +22,7 @@ bool GLES2Application::initGLFW()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
     glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
-    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    glfwWindowHint(GLFW_RESIZABLE, m_isResizable ? GL_TRUE : GL_FALSE);
 
     m_window = glfwCreateWindow(m_width, m_height, applicationName(), nullptr, nullptr);
     if (!m_window) {

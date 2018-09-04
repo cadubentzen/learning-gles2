@@ -6,7 +6,7 @@ namespace LearningGLES2 {
 
 class TriangleApplication final : public GLES2Application {
 public:
-    TriangleApplication() = default;
+    TriangleApplication();
     ~TriangleApplication() = default;
 
     const char* applicationName() final { return "Triangle Application"; };

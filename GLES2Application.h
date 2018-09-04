@@ -3,14 +3,13 @@
 #include <epoxy/gl.h>
 #include <epoxy/egl.h>
 
-#define GLFW_INCLUDE_ES2 1
-#include <GLFW/glfw3.h>
+typedef struct GLFWwindow GLFWwindow;
 
 namespace LearningGLES2 {
 
 class GLES2Application {
 public:
-    GLES2Application() = default;
+    GLES2Application();
     virtual ~GLES2Application() = default;
 
     virtual const char* applicationName() = 0;
@@ -24,7 +23,11 @@ public:
 
     int run();
 
+    void setIsResizable(bool isResizable) { m_isResizable = isResizable; }
+
 protected:
+    bool m_isResizable : 1;
+
     GLsizei m_width { 1280 };
     GLsizei m_height { 720 };
 

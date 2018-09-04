@@ -1,6 +1,14 @@
 #include "TriangleApplication.h"
 
+#define GLFW_INCLUDE_ES2 1
+#include <GLFW/glfw3.h>
+
 namespace LearningGLES2 {
+
+TriangleApplication::TriangleApplication()
+{
+    setIsResizable(true);
+}
 
 const char* TriangleApplication::vertexShaderSource()
 {
@@ -50,6 +58,8 @@ void TriangleApplication::draw()
     GLfloat vColors[] = { 1.0, 0.0, 0.0,
                           0.0, 1.0, 0.0,
                           0.0, 0.0, 1.0 };
+
+    glfwGetFramebufferSize(m_window, &m_width, &m_height);
 
     glViewport(0, 0, m_width, m_height);
 
